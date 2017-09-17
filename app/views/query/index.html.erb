@@ -1,0 +1,24 @@
+<div class="container">
+	<table class="table table-striped">
+	  <thead>
+	    <tr>
+	      <th>Sentence</th>
+	      <th>Rating</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% if @query and @query.size == 0 %>
+	      <tr>
+	        <td colspan="2">No questions found.</td>
+	      </tr>
+	    <% else %>
+	      <% @query.each do |query| %>
+	        <tr>
+	          <td><%= query.sentence %></td>
+	          <td><%= query.rating %></td>
+	        </tr>
+	      <% end %>
+	    <% end %>
+	  </tbody>
+	</table>
+</div>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stats App</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, class: "alert alert-success" do %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= msg %>
+        <% end %>
+      <% end %>
+      <%= yield %>
+      <div class="container">
+        <footer class="main-footer">
+          <div class="pull-left hidden-xs">
+            <% if ! @query.empty? %>
+              <%= button_to "Clear", clear_stats_path, method: :delete, data: { confirm: "Are you sure you wish to clear statistics?" }, class: "btn btn-danger" %>
+            <% else %>
+              <%= submit_tag 'Clear', id: 'clear_btn', class: 'btn btn-danger my-2 my-sm-0', disabled: true %>
+            <% end %>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
+<%= javascript_include_tag 'https://getbootstrap.com/assets/js/vendor/popper.min.js' %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>

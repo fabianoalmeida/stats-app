@@ -1,0 +1,9 @@
+<div class="container">
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <%= link_to "Stats App", root_path, class: "navbar-brand" %>
+    <%= form_tag search_path, id: 'search_form', method: :get, class: 'form-inline' do |f| %>
+      <%= text_field_tag :sentence, params[:sentence], class: 'form-control mr-sm-2', placeholder: 'Type your question...' %>
+      <%= submit_tag 'Search', id: 'search_btn', class: 'btn btn-primary my-2 my-sm-0', disabled: true %>
+    <% end %>
+  </nav>
+</div>
